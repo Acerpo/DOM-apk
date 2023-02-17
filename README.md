@@ -6,4 +6,4 @@ I implemented all the logic of the game in the "script.js" file as part of the "
 
 [Demo](https://acerpo.github.io/Guess-the-number/)
 
-![img](./Guess the number/img/1.png)
+![img](./Guess%20the%20number/img/1.png)

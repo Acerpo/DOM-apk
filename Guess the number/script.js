@@ -18,24 +18,14 @@ document.querySelector('.check').addEventListener('click', function () {
 
     if (score > hightscore) {
       hightscore = score;
-      document.querySelector('.highscore').textContent = hightscore;
+      document.querySelector('.highscore').textContent = hightscore; 
     }
 
     //If the entered number is greater than the secret
-  } else if (guessingNumber > secretNumber) {
+  } else if (guessingNumber !== secretNumber) {
     if (score > 1) {
-      document.querySelector('.guess-message').textContent = 'Too much ((';
-      score--;
-      document.querySelector('.score').textContent = score;
-    } else {
-      document.querySelector('.guess-message').textContent = 'You Lose';
-      document.querySelector('.score').textContent = 0;
-      document.querySelector('body').style.backgroundColor = 'rgb(236,28,35)';
-    }
-    //If the entered number is less than the secret
-  } else if (guessingNumber < secretNumber) {
-    if (score > 1) {
-      document.querySelector('.guess-message').textContent = 'Too few ((';
+      document.querySelector('.guess-message').textContent =
+        guessingNumber > secretNumber ? 'Too much ((' : 'Too few';
       score--;
       document.querySelector('.score').textContent = score;
     } else {

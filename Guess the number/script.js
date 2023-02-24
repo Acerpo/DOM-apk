@@ -1,47 +1,54 @@
+'use strict';
+
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 let hightscore = 0;
+const guesMessage = document.querySelector('.guess-message');
+const question = document.querySelector('.question');
+const body = document.querySelector('body');
+const highscore = document.querySelector('.highscore');
+const setScore = document.querySelector('.score');
+const setInputNumber = document.querySelector('.number-input');
 
 document.querySelector('.check').addEventListener('click', function () {
   const guessingNumber = Number(document.querySelector('.number-input').value);
 
-  console.log(guessingNumber);
   //No imput
   if (!guessingNumber) {
-    document.querySelector('.guess-message').textContent = 'Imput some number';
+    guesMessage.textContent = 'Imput some number';
     //Player won!
   } else if (guessingNumber === secretNumber) {
-    document.querySelector('.guess-message').textContent = 'You are Right!';
-    document.querySelector('.question').textContent = secretNumber;
-    document.querySelector('body').style.backgroundColor = 'rgb(97,196,150)';
-    document.querySelector('.question').style.width = '50rem';
+    guesMessage.textContent = 'You are Right!';
+    question.textContent = secretNumber;
+    body.style.backgroundColor = 'rgb(97,196,150)';
+    question.style.width = '50rem';
 
     if (score > hightscore) {
       hightscore = score;
-      document.querySelector('.highscore').textContent = hightscore; 
+      highscore.textContent = hightscore;
     }
 
     //If the entered number is greater than the secret
   } else if (guessingNumber !== secretNumber) {
     if (score > 1) {
-      document.querySelector('.guess-message').textContent =
+      guesMessage.textContent =
         guessingNumber > secretNumber ? 'Too much ((' : 'Too few';
       score--;
-      document.querySelector('.score').textContent = score;
+      setScore.textContent = score;
     } else {
-      document.querySelector('.guess-message').textContent = 'You Lose';
-      document.querySelector('.score').textContent = 0;
-      document.querySelector('body').style.backgroundColor = 'rgb(236,28,35)';
+      guesMessage.textContent = 'You Lose';
+      setScore.textContent = 0;
+      body.style.backgroundColor = 'rgb(236,28,35)';
     }
   }
 });
 
 document.querySelector('.again').addEventListener('click', function () {
-  document.querySelector('.question').textContent = '???';
-  document.querySelector('.question').style.width = '25rem';
-  document.querySelector('body').style.backgroundColor = 'rgb(0, 0, 0)';
-  document.querySelector('.guess-message').textContent = 'Start guessing!';
-  document.querySelector('.score').textContent = score = 20;
+  question.textContent = '???';
+  question.style.width = '25rem';
+  body.style.backgroundColor = 'rgb(0, 0, 0)';
+  guesMessage.textContent = 'Start guessing!';
+  setScore.textContent = score = 20;
   document.querySelector('.number-input').value = '';
   secretNumber = Math.trunc(Math.random() * 20) + 1;
 });

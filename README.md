@@ -16,7 +16,7 @@ The logic is responsible for the appearance of a modal window when you click on 
 
 This project implements the logic of the old game - Pig in a poke "script.js"
 
-![img](./Modal%20window/img/1.png)
+![img](./Pig/img/1.png)
 
 ---
 
